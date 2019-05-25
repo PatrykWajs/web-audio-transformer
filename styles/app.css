@@ -37,6 +37,16 @@ h1, h2 {
     padding-bottom: 0%;
 }
 
+#left{
+    float:left;
+    width:45%;
+}
+
+#right{
+    float: right;
+    width:55%;
+}
+
 .sliderLabel {
     width: 5em;
     float: left;
@@ -63,11 +73,6 @@ h1, h2 {
     margin: auto;
 }
 
-.sliderContainer {
-    width: 100%;
-    padding-bottom: 30px;
-}
-
 .main-controls {
   padding: 0.5rem 0;
 }
@@ -80,10 +85,22 @@ canvas {
   margin-bottom: 0.5rem;
 }
 
+.sliderContainer {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
 #audioVisualisationSlider {
     margin-left: 144px;
     width: 128px;
     float: left;
+}
+
+.range-slider {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #buttons {

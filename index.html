@@ -17,7 +17,7 @@
     <div class="wrapper">
 
       <header>
-        <h1>Web Audio Transformer</h1>
+        <h1>Web dictaphone</h1>
       </header>
 
       <section class="main-controls">
@@ -26,32 +26,44 @@
           <button class="record">Record</button>
           <button class="stop">Stop</button>
         </div>
+
         <div class="container">
-          <div class="sliderContainer">
-            <div class="sliderLabel">Pitch ratio</div>
-            <div id="pitchRatioSlider"></div>
-            <div id="pitchRatioDisplay" class="sliderDisplay"></div>
+
+          <div class="left">
+            <div class="sliderContainer">
+                <div class="sliderLabel">Pitch ratio</div>
+                <div id="pitchRatioSlider"></div>
+                <div id="pitchRatioDisplay" class="sliderDisplay"></div>
+            </div>
+
+            <div class="sliderContainer">
+                <div class="sliderLabel">Overlap ratio</div>
+                <div id="overlapRatioSlider"></div>
+                <div id="overlapRatioDisplay" class="sliderDisplay"></div>
+            </div>
+
+            <div class="sliderContainer">
+                <div class="sliderLabel">Grain size</div>
+                <div id="grainSizeSlider"></div>
+                <div id="grainSizeDisplay" class="sliderDisplay"></div>
+            </div>
           </div>
-          <div class="sliderContainer">
-            <div class="sliderLabel">Overlap ratio</div>
-            <div id="overlapRatioSlider"></div>
-            <div id="overlapRatioDisplay" class="sliderDisplay"></div>
-          </div>
-          <div class="sliderContainer">
-            <div class="sliderLabel">Grain size</div>
-            <div id="grainSizeSlider"></div>
-            <div id="grainSizeDisplay" class="sliderDisplay"></div>
-          </div>
-          <div class="sliderContainer">
-            <div class="sliderLabel">Visualisation</div>
-            <div id="audioVisualisationSlider"></div>
-            <div id="audioVisualisationDisplay" class="sliderDisplay"></div>
+
+          <div id="right">
+
+            <div class="sliderContainer">
+              <div class="sliderLabel">Visualisation</div>
+              <div id="audioVisualisationSlider"></div>
+              <div id="audioVisualisationDisplay" class="sliderDisplay"></div>
+            </div>
+            <div class="range-slider">
+              <span>Distortion: </span>
+              <input type="range" id="range" value="0">
+            </div>
           </div>
         </div>
       </section>
-
       <section class="sound-clips"></section>
-
     </div>
 
     <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
