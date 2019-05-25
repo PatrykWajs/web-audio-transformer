@@ -40,33 +40,52 @@ var pitchShifter = (function () {
 
 //Set active button to false while it is not pressed
 
-	whitenoise.active = false;
-	annoyingnoise.active = false;
+	whitenoise.addEventListener("click", StartWhite);
+	annoyingnoise.addEventListener("click", StartAnnoying);
+
+	whitenoise.disabled = false;
+	annoyingnoise.disabled = false;
 
 //Set up White Noise button when is pressed to play white noise
 //and when is pressed second time to stop white noise
 
-	whitenoise.onclick = function whitenoisefun(){
-		if(whitenoise.active = false){
-			whiteNoise.play();
-			whitenoise.active = true;
-		}else{
-			whiteNoise.stop();
-			whitenoise.active = false;
-		}
+	function StartWhite(){
+    console.log("Started White Noise");
+    whiteNoise.play();
+    annoyingnoise.disabled = true;
+    whitenoise.removeEventListener("click", StartWhite);
+    whitenoise.addEventListener("click", StopWhite);
+    whitenoise.value = "StopWhite";
+	}
+
+	function StopWhite(){
+    console.log("Stopped White Noise");
+    whiteNoise.stop();
+    annoyingnoise.disabled = false;
+    whitenoise.removeEventListener("click", StopWhite);
+    whitenoise.addEventListener("click", StartWhite);
+    whitenoise.value = "StartWhite";
 	}
 
 //Set up Annoying Noise button when is pressed to play oscillator noise
 //and when is pressed second time to stop oscillator noise
 
-	annoyingnoise.onclick = function annoyingnoisefun(){
-		if(annoyingnoise.active = false){
-			annoyingSound.play();
-			annoyingnoise.active = true;
-		}else{
-			annoyingSound.stop();
-			annoyingnoise.active = false;
-		}
+	function StartAnnoying(){
+    console.log("Started Annoying Noise");
+    annoyingSound.play();
+    whitenoise.disabled = true;
+    annoyingnoise.removeEventListener("click", StartAnnoying);
+    annoyingnoise.addEventListener("click", StopAnnoying);
+    annoyingnoise.value = "StopAnnoying";
+	}
+
+	function StopAnnoying(){
+    console.log("Stopped Annoying Noise");
+    annoyingSound.stop();
+    whitenoise.disabled = false;
+    annoyingnoise.removeEventListener("click", StopAnnoying);
+    annoyingnoise.addEventListener("click", StartAnnoying);
+    annoyingnoise.value = "StartAnnoying";
 	}
 
 //array to collect the audio data

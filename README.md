@@ -18,7 +18,7 @@ The app uses user audio input with microphone and transforms the audio with effe
 
 ###### Reported Bugs
 
-1. White Noise and Annoying Noise functions do not work properly
+1. You have to play Annoying Sound first in order the White Noise to Work
 2. Distortion enables a very annoying noise
 3. In order to use the microphone, you may have to enable a configuration flag
 4. The Transformed can not be downloaded. Instead normal voice can
