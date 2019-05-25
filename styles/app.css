@@ -135,10 +135,21 @@ button:active {
   transform: translateY(2px);
 }
 
+#white{
+  background: black;
+  margin-top: 10px;
+}
+
+#annoying{
+  background: red;
+  margin-top: 10px;
+}
+
 
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
  * in the available space */
+
 .sound-clips {
   flex: 1;
   overflow: auto;

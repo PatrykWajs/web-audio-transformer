@@ -29,6 +29,32 @@ var pitchShifter = (function () {
 	var canvas = document.querySelector('.visualizer');
 	var mainSection = document.querySelector('.main-controls');
 
+	var whitenoise = document.getElementById("white");
+	var annoyingnoise = document.getElementById("annoying");
+
+	whitenoise.active = false;
+	annoyingnoise.active = false;
+
+	whitenoise.onclick = function whitenoisefun(){
+		if(whitenoise.active = false){
+			whiteNoise.play();
+			whitenoise.active = true;
+		}else{
+			whiteNoise.stop();
+			whitenoise.active = false;
+		}
+	}
+
+	annoyingnoise.onclick = function annoyingnoisefun(){
+		if(annoyingnoise.active = false){
+			annoyingSound.play();
+			annoyingnoise.active = true;
+		}else{
+			annoyingSound.stop();
+			annoyingnoise.active = false;
+		}
+	}
+
 	var chunks = [];
 
 	hannWindow = function (length) {
@@ -61,6 +87,8 @@ var pitchShifter = (function () {
 					var mediaRecorder = new MediaRecorder(stream);
 
 					audioSource = audioContext.createMediaStreamSource(stream);
+
+
 
 					function makeDistortionCurve(amount) {
 					  var k = typeof amount === 'number' ? amount : 50,

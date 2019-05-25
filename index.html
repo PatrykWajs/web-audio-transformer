@@ -11,13 +11,17 @@
 
     <script src="scripts/jquery-1.9.1.min.js"></script>
     <script src="scripts/jquery-ui.min.js"></script>
+
+    <script src="scripts/Pizzicato.js"></script>
+
+    <script src="scripts/pizzi.js"></script>
   </head>
   <body>
 
     <div class="wrapper">
 
       <header>
-        <h1>Web dictaphone</h1>
+        <h1>Web Audio Transformer</h1>
       </header>
 
       <section class="main-controls">
@@ -60,6 +64,10 @@
               <span>Distortion: </span>
               <input type="range" id="range" value="0">
             </div>
+            <div>
+              <button id="white">White Noise</button>
+              <button id="annoying">Annoying Sound</button>
+            </div>
           </div>
         </div>
       </section>
@@ -68,7 +76,6 @@
 
     <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
 
-    <!-- Below is your custom application script -->
     <script src="scripts/app.js"></script>
 
   </body>
