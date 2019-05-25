@@ -5,7 +5,7 @@ two repositories and all copyright belong to their creators.
 
 The app uses user audio input with microphone and transforms the audio with effects like Pitch , Overlap , Distortion with the volume of user's choice. Also an white noise and annoying noise can be played as a background noise . User can also choose spectrum wave or sonogram Visualization type.
 
-![Web Audio Transformer Screenshot](https://github.com/web-audio-transformer/Screenshot.PNG "Screenshot of the Web Audio API app")
+![Web Audio Transformer Screenshot](https://github.com/PatrykWajs/web-audio-transformer/Screenshot.PNG "Screenshot of the Web Audio API app")
 
 ###### For better app use
 
