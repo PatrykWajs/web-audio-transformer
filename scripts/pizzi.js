@@ -1,3 +1,5 @@
+//Making functions whith the help of Pizzicato
+
 //Pizzicato white noise
 
 	 var whiteNoise = new Pizzicato.Sound(function(e) {

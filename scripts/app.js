@@ -1,5 +1,7 @@
 var pitchShifter = (function () {
 
+// set up basic variables for app
+
 	var audioContext,
 		audioSource ,
 		pitchShifterProcessor,
@@ -32,8 +34,17 @@ var pitchShifter = (function () {
 	var whitenoise = document.getElementById("white");
 	var annoyingnoise = document.getElementById("annoying");
 
+// disable stop button while not recording
+
+	stop.disabled = true;
+
+//Set active button to false while it is not pressed
+
 	whitenoise.active = false;
 	annoyingnoise.active = false;
+
+//Set up White Noise button when is pressed to play white noise
+//and when is pressed second time to stop white noise
 
 	whitenoise.onclick = function whitenoisefun(){
 		if(whitenoise.active = false){
@@ -45,6 +56,9 @@ var pitchShifter = (function () {
 		}
 	}
 
+//Set up Annoying Noise button when is pressed to play oscillator noise
+//and when is pressed second time to stop oscillator noise
+
 	annoyingnoise.onclick = function annoyingnoisefun(){
 		if(annoyingnoise.active = false){
 			annoyingSound.play();
@@ -55,7 +69,11 @@ var pitchShifter = (function () {
 		}
 	}
 
+//array to collect the audio data
+
 	var chunks = [];
+
+//function for pitch effect
 
 	hannWindow = function (length) {
 
@@ -66,11 +84,16 @@ var pitchShifter = (function () {
 		return window;
 	};
 
+//function for pitch effect
+
 	linearInterpolation = function (a, b, t) {
 		return a + (b - a) * t;
 	};
 
+//Audio initialization function
+
 	initAudio = function () {
+
 
 		if (!navigator.getUserMedia) {
 
@@ -78,17 +101,29 @@ var pitchShifter = (function () {
 
 		} else {
 
+			//To grab the media stream we want to capture, we use getUserMedia()
+
 			navigator.getUserMedia(
+
+				//we only use audio in this app
 
 				{audio: true, video: false},
 
 				function (stream) {
 
+					//We use the MediaRecorder API to record the stream
+
 					var mediaRecorder = new MediaRecorder(stream);
+
+					//The createMediaStreamSource() method of the AudioContext
+					//Interface is used to create a new MediaStreamAudioSourceNode object,
+					//given a media stream (say, from a navigator.getUserMedia instance),
+					//the audio from which can then be played and manipulated.
 
 					audioSource = audioContext.createMediaStreamSource(stream);
 
-
+					//makeDistortionCurve function taken from
+					//https://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
 					function makeDistortionCurve(amount) {
 					  var k = typeof amount === 'number' ? amount : 50,
@@ -104,17 +139,33 @@ var pitchShifter = (function () {
 					  return curve;
 					};
 
+					//The WaveShaperNode interface represents a non-linear distorter. It is an AudioNode
+					//that uses a curve to apply a wave shaping distortion to the signal. Beside obvious
+					//distortion effects, it is often used to add a warm feeling to the signal
+
 					var distortion = audioContext.createWaveShaper();
 
+					//The createGain() method of the BaseAudioContext interface creates a GainNode, which
+					//can be used to control the overall gain (or volume) of the audio graph
+
 					var gain = audioContext.createGain();
+
+					//cpnnectin gain with distortion and with audioContext output
 
 					audioSource.connect(gain);
 					gain.connect(distortion);
 					distortion.connect(audioContext.destination);
 
+					//using gain and distortion functions
+
 					gain.gain.value = 1;
 					distortion.curve = makeDistortionCurve(0);
+
+					//Multiply by 4 the amount of samples before applying the shaping curve
+
 					distortion.oversample = '4x';
+
+					//using user input to manipulate distortion
 
 					var range = document.querySelector('#range');
 					range.addEventListener('input', function(){
@@ -124,16 +175,26 @@ var pitchShifter = (function () {
 
 					record.onclick = function() {
 
+						//MediaRecorder.start() is used to start recording the stream once the record button is pressed
+
 						mediaRecorder.start();
+
+						//When the MediaRecorder is recording, the MediaRecorder.state property will return a value of "recording"
+
 						console.log(mediaRecorder.state);
 						console.log("recorder started");
 						record.style.background = "red";
+						record.style.color = "black";
 
 						stop.disabled = false;
 						record.disabled = true;
 					}
 
 					stop.onclick = function() {
+
+						//we use the MediaRecorder.stop() method to stop the recording when the stop button is pressed,
+						//and finalize the Blob ready for use somewhere else in our application
+
 						mediaRecorder.stop();
 
 						console.log(mediaRecorder.state);
@@ -145,8 +206,23 @@ var pitchShifter = (function () {
 						record.disabled = false;
 					}
 
+					//When recording has stopped, the state property returns a value of "inactive", and a stop event is fired.
+					//We register an event handler for this using mediaRecorder.onstop, and finalize our blob there from all
+					//the chunks we have received
+
 					mediaRecorder.onstop = function(e) {
 				      console.log("data available after MediaRecorder.stop() called.");
+
+							//Next, we create an HTML structure like the following, inserting it into our clip container,
+							//which is an <article> element as below:
+
+							//<article class="clip">
+							//  <audio controls></audio>
+							//  <p>your clip name</p>
+							//  <button>Delete</button>
+							//</article>
+
+							//getting user input to determine clip name
 
 				      var clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
 				      console.log(clipName);
@@ -160,6 +236,9 @@ var pitchShifter = (function () {
 				      deleteButton.textContent = 'Delete';
 				      deleteButton.className = 'delete';
 
+							//if user does not name his clip then it will be unnamed
+							//as My unnamed clip
+
 				      if(clipName === null) {
 				        clipLabel.textContent = 'My unnamed clip';
 				      } else {
@@ -172,16 +251,25 @@ var pitchShifter = (function () {
 				      soundClips.appendChild(clipContainer);
 
 				      audio.controls = true;
+
+							//After that, we create a combined Blob out of the recorded audio chunks, and create an object URL pointing
+							//to it, using window.URL.createObjectURL(blob). We then set the value of the <audio> element's src attribute
+							//to the object URL, so that when the play button is pressed on the audio player, it will play the Blob
+
 				      var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
 				      chunks = [];
 				      var audioURL = window.URL.createObjectURL(blob);
 				      audio.src = audioURL;
 				      console.log("recorder stopped");
 
+							//we set an onclick handler on the delete button to be a function that deletes the whole clip HTML structure
+
 				      deleteButton.onclick = function(e) {
 				        evtTgt = e.target;
 				        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
 				      }
+
+							//giving to user the choice to rename his clip
 
 				      clipLabel.onclick = function() {
 				        var existingName = clipLabel.textContent;
@@ -193,6 +281,9 @@ var pitchShifter = (function () {
 				        }
 				      }
 				    }
+
+						//As recording progresses, we need to collect the audio data. We register
+						//an event handler to do this using mediaRecorder.ondataavailable
 
 				    mediaRecorder.ondataavailable = function(e) {
 				      chunks.push(e.data);
@@ -206,6 +297,9 @@ var pitchShifter = (function () {
 			);
 		}
 
+		//The createAnalyser() method of the BaseAudioContext interface creates an AnalyserNode,
+		//which can be used to expose audio time and frequency data and create data visualisations
+
 			spectrumAudioAnalyser = audioContext.createAnalyser();
         	spectrumAudioAnalyser.fftSize = spectrumFFTSize;
         	spectrumAudioAnalyser.smoothingTimeConstant = spectrumSmoothing;
@@ -215,6 +309,8 @@ var pitchShifter = (function () {
         	sonogramAudioAnalyser.smoothingTimeConstant = sonogramSmoothing;
 
 	};
+
+//initializing processor function for pitch , overlap and grain audio effects
 
 	initProcessor = function () {
 
@@ -272,11 +368,15 @@ var pitchShifter = (function () {
 			}
 		};
 
+					//connecting pitch to spectrum , spectrum to sonogram and then to output
+
         	pitchShifterProcessor.connect(spectrumAudioAnalyser);
         	pitchShifterProcessor.connect(sonogramAudioAnalyser);
         	pitchShifterProcessor.connect(audioContext.destination);
 
 	};
+
+//init sliders function to initialize user input sliders
 
 	initSliders = function () {
 
@@ -369,6 +469,8 @@ var pitchShifter = (function () {
 		$("#audioSourceDisplay").text(audioSourcesNames[audioSourceIndex]);
 	};
 
+//init canvas function to initialize audio vizualizations
+
 	initCanvas = function (stream) {
 
         canvas = document.querySelector('canvas');
@@ -387,10 +489,14 @@ var pitchShifter = (function () {
         waveGradient.addColorStop(1, '#FFFFFF');
     };
 
+//render canvas function to give user the option of choosing his visualization preference
+
     renderCanvas = function () {
 
 
     	switch (audioVisualisationIndex) {
+
+					//Spectrum visualization
 
             case 0:
 
@@ -407,6 +513,8 @@ var pitchShifter = (function () {
                 }
 
                 break;
+
+						//Wave visualization
 
             case 1:
 
@@ -429,6 +537,8 @@ var pitchShifter = (function () {
                 canvasContext.fillRect(canvas.width - 1, axisY, 1, amplitude / 2);
 
                 break;
+
+						//Sonogram visualization
 
             case 2:
 
@@ -459,13 +569,19 @@ var pitchShifter = (function () {
 		init: function () {
 
 			if ('AudioContext' in window) {
+
+				//The AudioContext interface represents an audio-processing graph built from audio modules
+				//linked together, each represented by an AudioNode. An audio context controls both the
+				//creation of the nodes it contains and the execution of the audio processing, or decoding.
+				//You need to create an AudioContext before you do anything else, as everything happens inside a context
+
 				audioContext = new AudioContext();
 			} else {
 				alert('Your browser does not support the Web Audio API');
 				return;
 			}
 
-
+			//Initializing all functions
 
 			initAudio();
 			initProcessor();
@@ -477,6 +593,8 @@ var pitchShifter = (function () {
 	}
 
 }());
+
+//Animation when visualization option is changed
 
 window.requestAnimFrame = (function () {
 

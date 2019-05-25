@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /*background-color: white;*/
 }
 
 html, body {
@@ -31,7 +32,7 @@ h1, h2 {
     width: 100%;
     border-radius: 5px;
     background-color: white;
-    padding: 12%;
+    padding: 10%;
     padding-right: 7%;
     padding-top: 1em;
     padding-bottom: 0%;
@@ -87,7 +88,7 @@ canvas {
 
 .sliderContainer {
     width: 100%;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 }
 
 #audioVisualisationSlider {
@@ -125,16 +126,6 @@ button {
   padding: 0.5rem;
 }
 
-button:hover, button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
-}
-
-button:active {
-  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.5);
-  transform: translateY(2px);
-}
-
 #white{
   background: black;
   margin-top: 10px;
@@ -145,14 +136,14 @@ button:active {
   margin-top: 10px;
 }
 
+button:hover, button:focus {
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
+  background: #0ae;
+}
 
-/* Make the clips use as much space as possible, and
- * also show a scrollbar when there are too many clips to show
- * in the available space */
-
-.sound-clips {
-  flex: 1;
-  overflow: auto;
+button:active {
+  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.5);
+  transform: translateY(2px);
 }
 
 section, article {
@@ -161,6 +152,15 @@ section, article {
 
 article{
   margin: 0%;
+}
+
+/* Make the clips use as much space as possible, and
+ * also show a scrollbar when there are too many clips to show
+ * in the available space */
+
+.sound-clips {
+  flex: 1;
+  overflow: auto;
 }
 
 .clip {
