@@ -1,15 +1,11 @@
-#Web Audio Transformer
+# Web Audio Transformer
 
 The following Project is made for Speech and Audio Editing course of Ionian University.The project was based on
 two repositories and all copyright belong to their creators.
 
 The app uses user audio input with microphone and transforms the audio with effects like Pitch , Overlap , Distortion with the volume of user's choice. Also an white noise and annoying noise can be played as a background noise . User can also choose spectrum wave or sonogram Visualization type.
 
-<<<<<<< HEAD
-![Web Audio Transformer Screenshot](https://github.com/PatrykWajs/web-audio-transformer/Screenshot.PNG "Screenshot of the Web Audio API app")
-=======
-![Web Audio Transformer Screenshot](https://github.com/web-audio-transformere/Screenshot.png "Screenshot of the Web Audio API app")
->>>>>>> parent of c8b530d... Update README.md
+![Web Audio Transformer Screenshot](https://user-images.githubusercontent.com/22657181/58373945-4858f480-7f3e-11e9-841b-a2c545951824.PNG "Screenshot of the Web Audio API app")
 
 ###### For better app use
 
