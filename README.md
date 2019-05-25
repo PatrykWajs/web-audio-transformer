@@ -5,7 +5,7 @@ two repositories and all copyright belong to their creators.
 
 The app uses user audio input with microphone and transforms the audio with effects like Pitch , Overlap , Distortion with the volume of user's choice. Also an white noise and annoying noise can be played as a background noise . User can also choose spectrum wave or sonogram Visualization type.
 
-![Web Audio Transformer Screenshot](https://github.com/web-audio-transformere/Screenshot.PNG "Screenshot of the Web Audio API app")
+![Web Audio Transformer Screenshot](https://github.com/web-audio-transformer/Screenshot.PNG "Screenshot of the Web Audio API app")
 
 ###### For better app use
 
@@ -39,9 +39,9 @@ The app uses user audio input with microphone and transforms the audio with effe
 
 ###### Useful Links
 
--[MDN web docs-Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
--[webrtc/samples](https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record)
--[CSS-Tricks](https://css-tricks.com/introduction-web-audio-api/)
--[WEB](https://developers.google.com/web/updates/2016/01/mediarecorder)
--[W3C](https://w3c.github.io/mediacapture-record/MediaRecorder.html)
--[Pizzicato](https://alemangui.github.io/pizzicato/)
+- [MDN web docs-Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+- [webrtc/samples](https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record)
+- [CSS-Tricks](https://css-tricks.com/introduction-web-audio-api/)
+- [WEB](https://developers.google.com/web/updates/2016/01/mediarecorder)
+- [W3C](https://w3c.github.io/mediacapture-record/MediaRecorder.html)
+- [Pizzicato](https://alemangui.github.io/pizzicato/)
