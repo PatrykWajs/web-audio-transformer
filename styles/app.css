@@ -26,13 +26,64 @@ h1, h2 {
   padding: 0.5rem 0 0 0;
 }
 
+.container {
+    display: inline-flex;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 12%;
+    padding-right: 7%;
+    padding-top: 1em;
+    padding-bottom: 0%;
+}
+
+.sliderLabel {
+    width: 5em;
+    float: left;
+}
+
+.sliderDisplay {
+    width: 104px;
+    float: left;
+    text-align: right;
+}
+
+#pitchRatioSlider, #overlapRatioSlider, #grainSizeSlider , #distortionRatioSlider{
+    width: 272px;
+    float: left;
+}
+
+.warningContainer {
+    background-color: rgb(85, 0, 0);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    width: 480px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.sliderContainer {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
 .main-controls {
   padding: 0.5rem 0;
 }
 
 canvas {
   display: block;
+  padding-top: 10px;
+  width: 100%;
+  height: 200px;
   margin-bottom: 0.5rem;
+}
+
+#audioVisualisationSlider {
+    margin-left: 144px;
+    width: 128px;
+    float: left;
 }
 
 #buttons {
@@ -80,6 +131,10 @@ section, article {
   display: block;
 }
 
+article{
+  margin: 0%;
+}
+
 .clip {
   padding-bottom: 1rem;
 }
@@ -104,48 +159,6 @@ button.delete {
   background: #f00;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
-}
-
-/* Checkbox hack to control information box display */
-
-label {
-  font-size: 3rem;
-  position: absolute;
-  top: 2px;
-  right: 3px;
-  z-index: 5;
-  cursor: pointer;
-}
-
-input[type=checkbox] {
-   position: absolute;
-   top: -100px;
-}
-
-aside {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateX(100%);
-  transition: 0.3s all ease-out;
-  background-color: #efefef;
-  padding: 1rem;
-}
-
-aside p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-aside a {
-  color: #666;
-}
-
-/* Toggled State of information box */
-input[type=checkbox]:checked ~ aside {
-  transform: translateX(0);
 }
 
 /* Cursor when clip name is clicked over */

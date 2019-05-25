@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width">
     <title>Web Audio Transformer</title>
     <link href="styles/app.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="styles/jquery-ui.min.css" />
+    <link rel="stylesheet" href="styles/jquery.ui.slider.min.css" />
+
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery-ui.min.js"></script>
   </head>
   <body>
 
@@ -15,17 +21,36 @@
       </header>
 
       <section class="main-controls">
-        <canvas class="visualizer" height="60px"></canvas>
+        <canvas class="visualizer"></canvas>
         <div id="buttons">
           <button class="record">Record</button>
           <button class="stop">Stop</button>
         </div>
+        <div class="container">
+          <div class="sliderContainer">
+            <div class="sliderLabel">Pitch ratio</div>
+            <div id="pitchRatioSlider"></div>
+            <div id="pitchRatioDisplay" class="sliderDisplay"></div>
+          </div>
+          <div class="sliderContainer">
+            <div class="sliderLabel">Overlap ratio</div>
+            <div id="overlapRatioSlider"></div>
+            <div id="overlapRatioDisplay" class="sliderDisplay"></div>
+          </div>
+          <div class="sliderContainer">
+            <div class="sliderLabel">Grain size</div>
+            <div id="grainSizeSlider"></div>
+            <div id="grainSizeDisplay" class="sliderDisplay"></div>
+          </div>
+          <div class="sliderContainer">
+            <div class="sliderLabel">Visualisation</div>
+            <div id="audioVisualisationSlider"></div>
+            <div id="audioVisualisationDisplay" class="sliderDisplay"></div>
+          </div>
+        </div>
       </section>
 
-      <section class="sound-clips">
-
-
-      </section>
+      <section class="sound-clips"></section>
 
     </div>
 
