@@ -36,6 +36,14 @@ var pitchShifter = (function () {
 	var brownnoise = document.getElementById("brown");
 	var annoyingnoise = document.getElementById("annoying");
 
+	var logElement = document.getElementById("log");
+
+// A function to output log messages
+
+	function log(msg) {
+  		logElement.innerHTML += msg + "\n";
+	}
+
 // disable stop button while not recording
 
 	stop.disabled = true;
@@ -56,6 +64,7 @@ var pitchShifter = (function () {
 //and when is pressed second time to stop white noise
 
 	function StartWhite(){
+		log("Started White Noise");
 	    console.log("Started White Noise");
 	    whiteNoise.play();
 	    pinknoise.disabled = true;
@@ -67,6 +76,7 @@ var pitchShifter = (function () {
 	}
 
 	function StopWhite(){
+		log("Stopped White Noise");
 	    console.log("Stopped White Noise");
 	    whiteNoise.stop();
 	    pinknoise.disabled = false;
@@ -81,6 +91,7 @@ var pitchShifter = (function () {
 //and when is pressed second time to stop oscillator noise
 
 	function StartAnnoying(){
+		log("Started Annoying Noise");
 	    console.log("Started Annoying Noise");
 	    annoyingSound.play();
 	    pinknoise.disabled = true;
@@ -92,6 +103,7 @@ var pitchShifter = (function () {
 	}
 
 	function StopAnnoying(){
+		log("Stopped Annoying Noise");
 	    console.log("Stopped Annoying Noise");
 	    annoyingSound.stop();
 	    pinknoise.disabled = false;
@@ -106,6 +118,7 @@ var pitchShifter = (function () {
 //and when is pressed second time to stop pink noise
 
 	function StartPink(){
+		log("Started Pink Noise");
 	    console.log("Started Pink Noise");
 	    pinkNoise.play();
 	    annoyingnoise.disabled = true;
@@ -117,6 +130,7 @@ var pitchShifter = (function () {
 	}
 
 	function StopPink(){
+		log("Stopped Pink Noise");
 	    console.log("Stopped Pink Noise");
 	    pinkNoise.stop();
 	    annoyingnoise.disabled = false;
@@ -131,6 +145,7 @@ var pitchShifter = (function () {
 //and when is pressed second time to stop brown noise
 
 	function StartBrown(){
+		log("Started Brown Noise");
 	    console.log("Started Brown Noise");
 	    brownNoise.play();
 	    annoyingnoise.disabled = true;
@@ -142,6 +157,7 @@ var pitchShifter = (function () {
 	}
 
 	function StopBrown(){
+		log("Stopped Brown Noise");
 	    console.log("Stopped Brown Noise");
 	    brownNoise.stop();
 	    annoyingnoise.disabled = false;
@@ -264,6 +280,8 @@ var pitchShifter = (function () {
 
 						//When the MediaRecorder is recording, the MediaRecorder.state property will return a value of "recording"
 
+						log(mediaRecorder.state);
+						log("recorder started");
 						console.log(mediaRecorder.state);
 						console.log("recorder started");
 						record.style.background = "red";
@@ -280,6 +298,8 @@ var pitchShifter = (function () {
 
 						mediaRecorder.stop();
 
+						log(mediaRecorder.state);
+						log("recorder stopped");
 						console.log(mediaRecorder.state);
 						console.log("recorder stopped");
 						record.style.background = "";
@@ -308,6 +328,7 @@ var pitchShifter = (function () {
 							//getting user input to determine clip name
 
 				      var clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+				      log(clipName);
 				      console.log(clipName);
 				      var clipContainer = document.createElement('article');
 				      var clipLabel = document.createElement('p');
@@ -340,9 +361,11 @@ var pitchShifter = (function () {
 							//to the object URL, so that when the play button is pressed on the audio player, it will play the Blob
 
 				      var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+				      log("Successfully recorded " + blob.size + " bytes of " + blob.type + " media");
 				      chunks = [];
 				      var audioURL = window.URL.createObjectURL(blob);
 				      audio.src = audioURL;
+				      log("recorder stopped \n\n");
 				      console.log("recorder stopped");
 
 							//we set an onclick handler on the delete button to be a function that deletes the whole clip HTML structure

@@ -164,13 +164,28 @@ article{
   margin: 0%;
 }
 
+#bottom{
+  position: fixed;
+  height:18%;
+  width: 100%;
+  background-color: #333;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+pre{
+  width:36%;
+  float:left;
+}
+
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
  * in the available space */
 
 .sound-clips {
-  flex: 1;
-  overflow: auto;
+  width:64%;
+  float:right;
 }
 
 .clip {

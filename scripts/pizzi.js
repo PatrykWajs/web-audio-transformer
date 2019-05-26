@@ -1,5 +1,7 @@
 //Making functions whith the help of Pizzicato
 
+//All  noises were based on https://noisehack.com/generate-noise-web-audio-api/
+
 //Pizzicato white noise
 
 	 var whiteNoise = new Pizzicato.Sound(function(e) {

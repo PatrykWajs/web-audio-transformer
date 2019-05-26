@@ -25,9 +25,8 @@ The app uses user audio input with microphone and transforms the audio with effe
 
 ###### Future Expansions
 
-- Resolve Bugs problems
+- Resolve Bug problems
 - Add more audio transform effects
-- Add console messages
 - Add video Recording and saving-downloading
 - Add possibility of video manipulation
 - Make the app as an downloadable Desktop app
