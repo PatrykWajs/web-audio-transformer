@@ -244,16 +244,60 @@ var pitchShifter = (function () {
 
 					var distortion = audioContext.createWaveShaper();
 
+					//The createBiquadFilter() method of the BaseAudioContext interface creates a BiquadFilterNode, 
+					//which represents a second order filter configurable as several different common filter types
+
+					var lowpassfilter = audioContext.createBiquadFilter();
+					var highpassfilter = audioContext.createBiquadFilter();
+					var lowshelffilter = audioContext.createBiquadFilter();
+					var highshelffilter = audioContext.createBiquadFilter();
+
 					//The createGain() method of the BaseAudioContext interface creates a GainNode, which
 					//can be used to control the overall gain (or volume) of the audio graph
 
 					var gain = audioContext.createGain();
 
-					//cpnnectin gain with distortion and with audioContext output
+					//connectin gain with distortion and with audioContext output
 
 					audioSource.connect(gain);
 					gain.connect(distortion);
 					distortion.connect(audioContext.destination);
+
+					//connect filters with audioContext output
+
+					audioSource.connect(lowpassfilter);
+					lowpassfilter.connect(audioContext.destination);
+
+					audioSource.connect(highpassfilter);
+					highpassfilter.connect(audioContext.destination);
+
+					audioSource.connect(lowshelffilter);
+					lowshelffilter.connect(audioContext.destination);
+
+					audioSource.connect(highshelffilter);
+					highshelffilter.connect(audioContext.destination);
+
+					//configure filters
+
+					//Low Pass: Allows frequencies below the cutoff frequency to pass through and attenuates frequencies above the cutoff.
+
+					lowpassfilter.type = "lowpass";
+					lowpassfilter.gain.value = 25;
+
+					//High Pass: Allows frequencies above the cutoff frequency to pass through and attenuates frequencies below the cutoff.
+
+					highpassfilter.type = "highpass";
+					highpassfilter.gain.value = 25;
+
+					//Low Shelf: Allows all frequencies through, but adds a boost (or attenuation) to the lower frequencies.
+
+					lowshelffilter.type = "lowshelf";
+					lowshelffilter.gain.value = 25;
+
+					//High Shelf: Allows all frequencies through, but adds a boost (or attenuation) to the higher frequencies.
+
+					highshelffilter.type = "highshelf";
+					highshelffilter.gain.value = 25;
 
 					//using gain and distortion functions
 
@@ -264,12 +308,36 @@ var pitchShifter = (function () {
 
 					distortion.oversample = '4x';
 
-					//using user input to manipulate distortion
+					//using user input to manipulate distortion and filters
 
-					var range = document.querySelector('#range');
-					range.addEventListener('input', function(){
-					  var value = parseInt(this.value) * 5;
-					  distortion.curve = makeDistortionCurve(value);
+					var distrange = document.querySelector('#distrange');
+					distrange.addEventListener('input', function(){
+					  var distvalue = parseInt(this.value) * 5;
+					  distortion.curve = makeDistortionCurve(distvalue);
+					});
+
+					var rangelowpassfilter = document.querySelector('#rangelowpassfilter');
+					rangelowpassfilter.addEventListener('input', function(){
+					  var lowpassfiltervalue = parseInt(this.value) * 10;
+					  lowpassfilter.frequency.value = lowpassfiltervalue;
+					});
+
+					var rangehighpassfilter = document.querySelector('#rangehighpassfilter');
+					rangehighpassfilter.addEventListener('input', function(){
+					  var highpassfiltervalue = parseInt(this.value) * 10;
+					  highpassfilter.frequency.value = highpassfiltervalue;
+					});
+
+					var rangelowshelffilter = document.querySelector('#rangelowshelffilter');
+					rangelowshelffilter.addEventListener('input', function(){
+					  var lowshelffiltervalue = parseInt(this.value) * 10;
+					  lowshelffilter.frequency.value = lowshelffiltervalue;
+					});
+
+					var rangehighshelffilter = document.querySelector('#rangehighshelffilter');
+					rangehighshelffilter.addEventListener('input', function(){
+					  var highshelffiltervalue = parseInt(this.value) * 10;
+					  highshelffilter.frequency.value = highshelffiltervalue;
 					});
 
 					record.onclick = function() {

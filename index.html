@@ -63,8 +63,29 @@
 
             <div class="range-slider">
               <span>Distortion: </span>
-              <input type="range" id="range" value="0">
+              <input type="range" id="distrange" value="0">
             </div>
+
+            <div class="range-slider">
+              <span>Low Pass Filter: </span>
+              <input type="range" id="rangelowpassfilter" value="0">
+            </div>
+
+            <div class="range-slider">
+              <span>High Pass Filter: </span>
+              <input type="range" id="rangehighpassfilter" value="0">
+            </div>
+
+            <div class="range-slider">
+              <span>Low Shelf Filter: </span>
+              <input type="range" id="rangelowshelffilter" value="0">
+            </div>
+
+            <div class="range-slider">
+              <span>High Shelf Filter: </span>
+              <input type="range" id="rangehighshelffilter" value="0">
+            </div>
+
             <div>
               <button id="white">White Noise</button>
               <button id="pink">Pink Noise</button>
@@ -72,14 +93,15 @@
               <button id="annoying">Annoying Sound</button>
             </div>
           </div>
+
+          <section id="bottom">
+            <pre id="log"></pre>
+            <span class="sound-clips"></span>
+          </section>
+
         </div>
       </section>
     </div>
-
-    <section id="bottom">
-      <pre id="log"></pre>
-      <span class="sound-clips"></span>
-    </section>
 
     <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
 

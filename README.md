@@ -3,9 +3,11 @@
 The following Project is made for Speech and Audio Editing course of Ionian University.The project was based on
 two repositories and all copyright belong to their creators.
 
-The app uses user audio input with microphone and transforms the audio with effects like Pitch , Overlap , Distortion with the volume of user's choice. Also an white noise and annoying noise can be played as a background noise . User can also choose spectrum wave or sonogram Visualization type.
+#### The Application is made based on Web Audio API.
 
-![Web Audio Transformer Screenshot](https://user-images.githubusercontent.com/22657181/58373945-4858f480-7f3e-11e9-841b-a2c545951824.PNG "Screenshot of the Web Audio API app")
+The app uses user audio input with microphone and transforms the audio with effects like Pitch , Overlap , Distortion and filters (LowPass,HighPass,Lowshelf,HighShelf)with the volume of user's choice. Also white noise, pink noise, brown noise and annoying noise can be played as a background noise. User can also choose spectrum wave or sonogram Visualization type.
+
+![Web Audio Transformer Screenshot](https://user-images.githubusercontent.com/22657181/58386282-f085c080-8005-11e9-8896-f32b027ce866.png "Screenshot of the Web Audio API app")
 
 ###### For better app use
 
@@ -18,7 +20,7 @@ The app uses user audio input with microphone and transforms the audio with effe
 
 ###### Reported Bugs
 
-1. You have to play Annoying Sound first in order the White Noise to Work
+1. You have to play Annoying Sound first in order the White Noise, Pink Noise or Brown Noise to Work
 2. Distortion enables a very annoying noise
 3. In order to use the microphone, you may have to enable a configuration flag
 4. The Transformed can not be downloaded. Instead normal voice can
@@ -26,7 +28,6 @@ The app uses user audio input with microphone and transforms the audio with effe
 ###### Future Expansions
 
 - Resolve Bug problems
-- Add more audio transform effects
 - Add video Recording and saving-downloading
 - Add possibility of video manipulation
 - Make the app as an downloadable Desktop app
