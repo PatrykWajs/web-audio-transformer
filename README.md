@@ -27,6 +27,7 @@ The app uses user audio input with microphone and transforms the audio with effe
 
 - Resolve Bugs problems
 - Add more audio transform effects
+- Add console messages
 - Add video Recording and saving-downloading
 - Add possibility of video manipulation
 - Make the app as an downloadable Desktop app
@@ -42,6 +43,7 @@ The app uses user audio input with microphone and transforms the audio with effe
 - [MDN web docs-Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 - [webrtc/samples](https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record)
 - [CSS-Tricks](https://css-tricks.com/introduction-web-audio-api/)
+- [NoiseHack](https://noisehack.com/generate-noise-web-audio-api/)
 - [WEB](https://developers.google.com/web/updates/2016/01/mediarecorder)
 - [W3C](https://w3c.github.io/mediacapture-record/MediaRecorder.html)
 - [Pizzicato](https://alemangui.github.io/pizzicato/)

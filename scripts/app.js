@@ -32,6 +32,8 @@ var pitchShifter = (function () {
 	var mainSection = document.querySelector('.main-controls');
 
 	var whitenoise = document.getElementById("white");
+	var pinknoise = document.getElementById("pink");
+	var brownnoise = document.getElementById("brown");
 	var annoyingnoise = document.getElementById("annoying");
 
 // disable stop button while not recording
@@ -41,51 +43,113 @@ var pitchShifter = (function () {
 //Set active button to false while it is not pressed
 
 	whitenoise.addEventListener("click", StartWhite);
+	pinknoise.addEventListener("click", StartPink);
+	brownnoise.addEventListener("click", StartBrown);
 	annoyingnoise.addEventListener("click", StartAnnoying);
 
 	whitenoise.disabled = false;
+	pinknoise.disabled = false;
+	brownnoise.disabled = false;
 	annoyingnoise.disabled = false;
 
 //Set up White Noise button when is pressed to play white noise
 //and when is pressed second time to stop white noise
 
 	function StartWhite(){
-    console.log("Started White Noise");
-    whiteNoise.play();
-    annoyingnoise.disabled = true;
-    whitenoise.removeEventListener("click", StartWhite);
-    whitenoise.addEventListener("click", StopWhite);
-    whitenoise.value = "StopWhite";
+	    console.log("Started White Noise");
+	    whiteNoise.play();
+	    pinknoise.disabled = true;
+	    brownnoise.disabled = true;
+	    annoyingnoise.disabled = true;
+	    whitenoise.removeEventListener("click", StartWhite);
+	    whitenoise.addEventListener("click", StopWhite);
+	    whitenoise.value = "StopWhite";
 	}
 
 	function StopWhite(){
-    console.log("Stopped White Noise");
-    whiteNoise.stop();
-    annoyingnoise.disabled = false;
-    whitenoise.removeEventListener("click", StopWhite);
-    whitenoise.addEventListener("click", StartWhite);
-    whitenoise.value = "StartWhite";
+	    console.log("Stopped White Noise");
+	    whiteNoise.stop();
+	    pinknoise.disabled = false;
+	    brownnoise.disabled = false;
+	    annoyingnoise.disabled = false;
+	    whitenoise.removeEventListener("click", StopWhite);
+	    whitenoise.addEventListener("click", StartWhite);
+	    whitenoise.value = "StartWhite";
 	}
 
 //Set up Annoying Noise button when is pressed to play oscillator noise
 //and when is pressed second time to stop oscillator noise
 
 	function StartAnnoying(){
-    console.log("Started Annoying Noise");
-    annoyingSound.play();
-    whitenoise.disabled = true;
-    annoyingnoise.removeEventListener("click", StartAnnoying);
-    annoyingnoise.addEventListener("click", StopAnnoying);
-    annoyingnoise.value = "StopAnnoying";
+	    console.log("Started Annoying Noise");
+	    annoyingSound.play();
+	    pinknoise.disabled = true;
+	    brownnoise.disabled = true;
+	    whitenoise.disabled = true;
+	    annoyingnoise.removeEventListener("click", StartAnnoying);
+	    annoyingnoise.addEventListener("click", StopAnnoying);
+	    annoyingnoise.value = "StopAnnoying";
 	}
 
 	function StopAnnoying(){
-    console.log("Stopped Annoying Noise");
-    annoyingSound.stop();
-    whitenoise.disabled = false;
-    annoyingnoise.removeEventListener("click", StopAnnoying);
-    annoyingnoise.addEventListener("click", StartAnnoying);
-    annoyingnoise.value = "StartAnnoying";
+	    console.log("Stopped Annoying Noise");
+	    annoyingSound.stop();
+	    pinknoise.disabled = false;
+	    brownnoise.disabled = false;
+	    whitenoise.disabled = false;
+	    annoyingnoise.removeEventListener("click", StopAnnoying);
+	    annoyingnoise.addEventListener("click", StartAnnoying);
+	    annoyingnoise.value = "StartAnnoying";
+	}
+
+//Set up Pink Noise button when is pressed to play oscillator noise
+//and when is pressed second time to stop pink noise
+
+	function StartPink(){
+	    console.log("Started Pink Noise");
+	    pinkNoise.play();
+	    annoyingnoise.disabled = true;
+	    brownnoise.disabled = true;
+	    whitenoise.disabled = true;
+	    pinknoise.removeEventListener("click", StartPink);
+	    pinknoise.addEventListener("click", StopPink);
+	    pinknoise.value = "StopPink";
+	}
+
+	function StopPink(){
+	    console.log("Stopped Pink Noise");
+	    pinkNoise.stop();
+	    annoyingnoise.disabled = false;
+	    brownnoise.disabled = false;
+	    whitenoise.disabled = false;
+	    pinknoise.removeEventListener("click", StopPink);
+	    pinknoise.addEventListener("click", StartPink);
+	    pinknoise.value = "StartPink";
+	}
+
+//Set up Brown Noise button when is pressed to play oscillator noise
+//and when is pressed second time to stop brown noise
+
+	function StartBrown(){
+	    console.log("Started Brown Noise");
+	    brownNoise.play();
+	    annoyingnoise.disabled = true;
+	    pinknoise.disabled = true;
+	    whitenoise.disabled = true;
+	    brownnoise.removeEventListener("click", StartBrown);
+	    brownnoise.addEventListener("click", StopBrown);
+	    brownnoise.value = "StopBrown";
+	}
+
+	function StopBrown(){
+	    console.log("Stopped Brown Noise");
+	    brownNoise.stop();
+	    annoyingnoise.disabled = false;
+	    pinknoise.disabled = false;
+	    whitenoise.disabled = false;
+	    brownnoise.removeEventListener("click", StopBrown);
+	    brownnoise.addEventListener("click", StartBrown);
+	    brownnoise.value = "StartBrown";
 	}
 
 //array to collect the audio data
